@@ -23,3 +23,7 @@ scrape_configs:
           - 'agent-us-east:9100'
           - 'agent-asia:9100'
 ```
+
+## Contribution
+
+Please check our [Contributing Guide](./docs/CONTRIBUTING.md) on how you can contribute.
