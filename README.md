@@ -1,5 +1,5 @@
 # Uptime Scope
-Uptime Monitor
+A Prometheus Exporter for Uptime Monitoring
 
 ## Running agent:
 ```
