@@ -92,6 +92,6 @@ func main() {
 
 	// Metrics endpoint
 	http.Handle("/metrics", promhttp.Handler())
-	log.Println("Agent running on :9100")
-	log.Fatal(http.ListenAndServe(":9100", nil))
+	log.Println("Agent running on :8181")
+	log.Fatal(http.ListenAndServe(":8181", nil))
 }

@@ -9,19 +9,19 @@ go run main.go
 
 ## Metrics:
 ```
-http://localhost:9100/metrics
+http://localhost:8181/metrics
 ```
 
 # Prometheus.yml example:
 ```
 scrape_configs:
-  - job_name: 'uptime_agents'
+  - job_name: 'uptime_scope'
     scrape_interval: 30s
     static_configs:
       - targets:
-          - 'agent-eu-west:9100'
-          - 'agent-us-east:9100'
-          - 'agent-asia:9100'
+          - 'uptimescope-eu-west:8181'
+          - 'uptimescope-us-east:8181'
+          - 'uptimescope-asia:8181'
 ```
 
 ## Contribution
