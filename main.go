@@ -1,21 +1,26 @@
 package main
 
 import (
+	"fmt"
+	"io/ioutil"
 	"log"
 	"net/http"
 	"time"
+
+	"gopkg.in/yaml.v3"
 
 	"github.com/prometheus/client_golang/prometheus"
 	"github.com/prometheus/client_golang/prometheus/promhttp"
 )
 
 // --- Configuration ---
-var checks = []string{
-	"https://pyrascope.io",
-	"https://pyrascope.net",
-}
+var checks []string
+var region string
 
-var region = "home" // tag to identify the region of this agent
+type Config struct {
+	Region string   `yaml:"region"`
+	Checks []string `yaml:"checks"`
+}
 
 // --- Metrics ---
 var (
@@ -50,6 +55,22 @@ func init() {
 	prometheus.MustRegister(statusCodeGauge)
 }
 
+func loadConfig(path string) error {
+	data, err := ioutil.ReadFile(path)
+	if err != nil {
+		return fmt.Errorf("failed to read config: %w", err)
+	}
+
+	var cfg Config
+	if err := yaml.Unmarshal(data, &cfg); err != nil {
+		return fmt.Errorf("failed to parse YAML: %w", err)
+	}
+
+	checks = cfg.Checks
+	region = cfg.Region
+	return nil
+}
+
 func runChecks() {
 	client := &http.Client{Timeout: 10 * time.Second}
 
@@ -81,6 +102,9 @@ func runChecks() {
 }
 
 func main() {
+	if err := loadConfig("checks.yaml"); err != nil {
+		log.Fatalf("Error loading config: %v", err)
+	}
 
 	// Periodic checker
 	go func() {
