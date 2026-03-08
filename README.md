@@ -7,9 +7,14 @@ go mod tidy
 go run main.go
 ```
 
-## Running with Docker Compose:
+## Running with Docker Compose for Development:
 ```
-docker compose up --build -d
+docker compose -f docker-compose-dev.yml up --build
+```
+
+## Running with Docker Compose for Production:
+```
+docker compose up -d
 ```
 
 Stop:
