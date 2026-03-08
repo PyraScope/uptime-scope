@@ -7,6 +7,16 @@ go mod tidy
 go run main.go
 ```
 
+## Running with Docker Compose:
+```
+docker compose up --build -d
+```
+
+Stop:
+```
+docker compose down
+```
+
 ## Metrics:
 ```
 http://localhost:8181/metrics

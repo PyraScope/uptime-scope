@@ -1,0 +1,9 @@
+services:
+  uptime-scope:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: uptime-scope
+    ports:
+      - "8181:8181"
+    restart: unless-stopped
