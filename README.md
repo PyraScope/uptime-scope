@@ -22,7 +22,7 @@ docker compose down
 http://localhost:8181/metrics
 ```
 
-# Prometheus.yml example:
+## Prometheus.yml example:
 ```
 scrape_configs:
   - job_name: 'uptime_scope'
@@ -33,6 +33,11 @@ scrape_configs:
           - 'uptimescope-us-east:8181'
           - 'uptimescope-asia:8181'
 ```
+
+## Ports:
+| Default Port | Name | Listing |
+|---|---|---|
+| 8181 | UptimeScope | [Prometheus](https://github.com/prometheus/prometheus/wiki/Default-port-allocations) |
 
 ## Contribution
 
