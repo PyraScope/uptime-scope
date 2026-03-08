@@ -57,12 +57,12 @@ func init() {
 }
 
 func getConfigPath() string {
-	exe, err := os.Executable()
+	wd, err := os.Getwd()
 	if err != nil {
-		log.Fatalf("Failed to get executable path: %v", err)
+		log.Fatalf("Failed to get working directory: %v", err)
 	}
 
-	return filepath.Join(filepath.Dir(exe), "checks.yaml")
+	return filepath.Join(wd, "checks.yaml")
 }
 
 func loadConfig(path string) error {
