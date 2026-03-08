@@ -2,3 +2,4 @@ region: home
 checks:
   - https://pyrascope.io
   - https://pyrascope.net
+  - https://pyrascope.app
