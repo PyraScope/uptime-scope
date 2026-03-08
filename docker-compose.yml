@@ -7,3 +7,5 @@ services:
     ports:
       - "8181:8181"
     restart: unless-stopped
+    volumes:
+      - ./checks.yaml:/app/checks.yaml:ro
