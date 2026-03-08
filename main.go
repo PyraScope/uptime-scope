@@ -5,6 +5,7 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"path/filepath"
 	"time"
 
 	"gopkg.in/yaml.v3"
@@ -55,6 +56,15 @@ func init() {
 	prometheus.MustRegister(statusCodeGauge)
 }
 
+func getConfigPath() string {
+	exe, err := os.Executable()
+	if err != nil {
+		log.Fatalf("Failed to get executable path: %v", err)
+	}
+
+	return filepath.Join(filepath.Dir(exe), "checks.yaml")
+}
+
 func loadConfig(path string) error {
 	data, err := os.ReadFile(path)
 	if err != nil {
@@ -102,7 +112,9 @@ func runChecks() {
 }
 
 func main() {
-	if err := loadConfig("checks.yaml"); err != nil {
+	configPath := getConfigPath()
+
+	if err := loadConfig(configPath); err != nil {
 		log.Fatalf("Error loading config: %v", err)
 	}
 
