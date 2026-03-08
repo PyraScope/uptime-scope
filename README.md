@@ -2,6 +2,7 @@
 <p align="center">
 <img src="https://img.shields.io/github/go-mod/go-version/Pyrascope/uptime-scope" alt="Go Version">
 <img src="https://img.shields.io/badge/Architecture-amd64%20%7C%20arm64-orange" alt="Supported Archicetures">
+<img src="https://img.shields.io/github/actions/workflow/status/Pyrascope/uptime-scope/ci.yml" alt="CI Build">
 </p>
 
 A Prometheus Exporter for Uptime Monitoring
