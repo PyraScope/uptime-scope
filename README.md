@@ -7,6 +7,11 @@
 
 A Prometheus Exporter for Uptime Monitoring
 
+## ToDo
+
+- Dynamic Target Discovery
+- Retry Logic
+
 ## Running agent:
 ```
 go mod tidy
